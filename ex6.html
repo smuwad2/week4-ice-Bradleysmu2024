@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-<body>
-
+  <body>
     <h1>Shopping List</h1>
 
     <select id="select_item">
-        <option value="NoteBook">Notebook</option>
-        <option value="Jello">Jello</option>
-        <option value="Spinach">Spinach</option>
-        <option value="Rice">Rice</option>
-        <option value="Birthday Cake">Birthday Cake</option>
-        <option value="Candles">Candles</option>
+      <option value="NoteBook">Notebook</option>
+      <option value="Jello">Jello</option>
+      <option value="Spinach">Spinach</option>
+      <option value="Rice">Rice</option>
+      <option value="Birthday Cake">Birthday Cake</option>
+      <option value="Candles">Candles</option>
     </select>
 
     <p>Shopping Cart:</p>
     <ul id="shopList"></ul>
 
     <script>
-        
-        // add code here
-        
-        
+        const dropdown = document.getElementById("select_item");
+        dropdown.addEventListener("change", addItem);
+
+        function addItem() {
+            const ulElem = document.getElementById("shopList");
+
+            const dropdown_value = dropdown.value;
+
+            const liElem = document.createElement("li");
+            liElem.textContent = dropdown_value;
+
+            ulElem.appendChild(liElem);
+        }
+
     </script>
-
-    
-
-    </body>
+  </body>
 </html>

@@ -1,32 +1,64 @@
 <html>
+  <head>
+    <title>Event Handling</title>
+  </head>
 
-<head>
-   <title>Event Handling</title>
-</head>
+  <body>
+    <h1>Shopping List</h1>
+    <p>Get it done today</p>
 
-<body>
+    <input type="text" id="inputText" />
+    <!-- add a button here for adding new item -->
+    <button id="btnAdd" onclick="addItem()">Enter</button>
+    <ul>
+      <li>
+        Notebook<button onclick="removeItem(this.parentNode)">delete</button>
+      </li>
+      <li>
+        Jello<button onclick="removeItem(this.parentNode)">delete</button>
+      </li>
+      <li>
+        Spinach<button onclick="removeItem(this.parentNode)">delete</button>
+      </li>
+      <li>Rice<button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>
+        Birthday Cake<button onclick="removeItem(this.parentNode)">
+          delete
+        </button>
+      </li>
+      <li>
+        Candles<button onclick="removeItem(this.parentNode)">delete</button>
+      </li>
+    </ul>
 
-   <h1>Shopping List</h1>
-   <p>Get it done today</p>
-
-   <input type="text" id="inputText">
-   <!-- add a button here for adding new item -->
-
-   <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
-   </ul>
-
-   <script>
-
+    <script>
       // add code here
+      function removeItem(obj) {
+          obj.remove();
+        }
 
-   </script>
+      function addItem() {
+        const inputVal = document.getElementById("inputText").value.trim();
+        if (inputVal === "") return;
 
-</body>
+        const liElem = document.createElement("li");
+        liElem.textContent = inputVal;
 
+        const buttonElem = document.createElement("button");
+        buttonElem.textContent = "delete";
+        buttonElem.onclick = function () {
+          removeItem(this.parentNode);
+        };
+
+        liElem.appendChild(buttonElem);
+
+        const ulElem = document.querySelector("ul");
+        ulElem.appendChild(liElem);
+
+        document.getElementById("inputText").value = "";
+
+        
+      }
+    </script>
+  </body>
 </html>
